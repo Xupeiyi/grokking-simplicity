@@ -44,7 +44,7 @@ function update_shipping_icons() {
             button.show_free_shipping_icon();
         }
         else {
-            button.hide_free_shipping.icon();
+            button.hide_free_shipping_icon();
         }
     }
 }
