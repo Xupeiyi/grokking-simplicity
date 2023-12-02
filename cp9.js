@@ -24,6 +24,25 @@ function gets_free_shipping(cart) {
     return calc_total(cart) >= 20;
 }
 
+function get_watch_discount(cart) {
+    let total = calc_total(cart);
+    let has_watch = is_in_cart("watch");
+    return total > 100 && has_watch;
+}
+
+
+function add_item_to_cart(name, price) {
+    let item = make_cart_item(name, price);
+    shopping_cart = add_item(shopping_cart, item);
+    let total = calc_total(shopping_cart);
+    set_cart_total_dom(total);
+    update_shipping_icons(shopping_cart);
+    update_tax_dom(total);
+    shopping_cart = black_friday_promotion_safe(shopping_cart);
+    log_add_to_cart();
+}
+
+
 // layer 2
 function is_in_cart(cart, name) {
     return cart.hasOwnProperty(name);
