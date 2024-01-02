@@ -12,9 +12,11 @@ function nestedUpdate(object, keys, modify) {
     }
     let key1 = keys[0];
     let restOfKeys = dropFirst(keys);
-    return update(object, key1, (value1) => {
-        return nestedUpdate(value1, restOfKeys, modify);
-    });
+    return update(
+        object, 
+        key1, 
+        value1 => nestedUpdate(value1, restOfKeys, modify)
+    );
 }
 
 
